@@ -1,0 +1,373 @@
+<!-- Sidebar -->
+<div id="sidebar">
+  <div id="container">
+
+    <!-- Header -->
+    <header id="header">
+      <h1>ChipinqueTrails</h1>
+      <p>Mapas extraoficiales de trails para hiking y bicicleta de montaña del
+        <a href="http://www.chipinque.org.mx/" target="_blank">Parque Ecológico Chipinque</a>
+        en San Pedro Garza García, Nuevo León, México.</p>
+    </header>
+
+    <section class="mobile-only">
+      <p><i class="fa fa-warning"></i> El mapa dinámico no funciona en dispositivos móviles,
+        pero puedes leer la información en esta página.
+        <a class="button" href="https://drive.google.com/open?id=1Bfi0Djr41R-IMb0A6Hbr2QsXVnQ&usp=sharing" target="_blank">
+          <i class="fa fa-map-o"></i> Ver Mapa
+        </a>
+      </p>
+    </section>
+
+    <section id="legend" class="section section-small section-collapsible">
+      <div class="section-title">
+        <h2>Clasificaciones y Leyendas</h2>
+      </div>
+      <div class="section-body">
+        <div>
+          <h4>Tipo de Actividad</h4>
+          <p>Cada trail cuenta con clasificaciones para 4 diferentes actividades:</p>
+          <ul class="trail-classification no-padding">
+            <li>
+              <i class="fa fa-fw fa-male"></i><i class="fa fa-fw fa-long-arrow-up"></i> Hiking de subida
+            </li>
+            <li>
+              <i class="fa fa-fw fa-male"></i><i class="fa fa-fw fa-long-arrow-down"></i> Hiking de bajada
+            </li>
+            <li>
+              <i class="fa fa-fw fa-bicycle"></i><i class="fa fa-fw fa-long-arrow-up"></i> Bicicleta de subida
+            </li>
+            <li>
+              <i class="fa fa-fw fa-bicycle"></i><i class="fa fa-fw fa-long-arrow-down"></i> Bicicleta de bajada
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Dificultad</h4>
+          <p>Los niveles de dificultad fueron determinados de acuerdo a _____.</p>
+          <ul class="trail-classification no-padding">
+            <li>
+              <span class="label unknown"></span>
+              Desconocido, no hemos recorrido la ruta o no puede ser clasificada.
+            </li>
+            <li>
+              <span class="label beginner"></span>
+              Segmentos perfectos para aprender, no requieren de mucha habilidad en la bicicleta ni de
+              mucha condición física.
+            </li>
+            <li>
+              <span class="label medium"></span>
+              No requieren de mucha habilidad técnica, pero exigen un poco en condición física.
+            </li>
+            <li>
+              <span class="label advanced"></span>
+              Requiere buena experiencia de manejo así como un nivel avanzado de condición física.
+            </li>
+            <li>
+              <span class="label expert"></span>
+              En el caso de subidas, requieren un nivel excelente de condición física y manejo técnico.
+              En el caso de bajadas, generalmente son rutas de alto riesgo y requieren de equipo de protección.
+            </li>
+            <li>
+              <span class="label impossible"></span> No se recomienda intentarlo.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Segmentos Prohibidos</h4>
+          <p>Algunos segmentos y/o actividades están marcados como
+            <span class="label banned"></span> por decisiones y políticas del Parque.
+          </p>
+        </div>
+
+        <div>
+          <h4>Condiciones</h4>
+          <p>ChipinqueTrails no está afiliado con el Parque Ecológico Chipinque.
+            La información presentada en el sitio es de carácter meramente informativo.
+            Respeta el reglamento del Parque.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sections -->
+    <section class="section section-collapsible">
+      <div class="section-title">
+        <h2>Lugares</h2>
+      </div>
+      <div class="section-body">
+        <div class="item item-collapsible" *ngFor="let landmark of landmarks">
+          <div class="item-title">{{ landmark.name }}</div>
+          <div class="item-body">{{ landmark.description }}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-collapsible">
+      <div class="section-title">
+        <h2>Caminos Pavimentados</h2>
+      </div>
+      <div class="section-body">
+        <!--<p>Carreteras para carros y otros vehículos</p>-->
+
+
+        <div class="item item-collapsible" *ngFor="let trail of pavementRoads">
+          <div class="item-title">{{ trail.name }}</div>
+          <div class="item-body">
+            {{ trail.description }}
+            <ul class="trail-classification">
+              <li>
+                <i class="fa fa-fw fa-male"></i><i class="fa fa-fw fa-long-arrow-up"></i>
+                <span *ngIf="trail.walk_up.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.walk_up.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.walk_up.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.walk_up.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.walk_up.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.walk_up.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.walk_up.banned" class="label banned"></span>
+                {{ trail.walk_up.description }}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-male"></i><i class="fa fa-fw fa-long-arrow-down"></i>
+                <span *ngIf="trail.walk_down.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.walk_down.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.walk_down.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.walk_down.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.walk_down.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.walk_down.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.walk_down.banned" class="label banned"></span>
+                {{ trail.walk_down.description }}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-bicycle"></i><i class="fa fa-fw fa-long-arrow-up"></i>
+                <span *ngIf="trail.bike_up.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.bike_up.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.bike_up.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.bike_up.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.bike_up.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.bike_up.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.bike_up.banned" class="label banned"></span>
+                {{ trail.bike_up.description }}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-bicycle"></i><i class="fa fa-fw fa-long-arrow-down"></i>
+                <span *ngIf="trail.bike_down.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.bike_down.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.bike_down.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.bike_down.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.bike_down.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.bike_down.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.bike_down.banned" class="label banned"></span>
+                {{ trail.bike_down.description }}
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-collapsible">
+      <div class="section-title">
+        <h2>Brechas
+          <small>Fireroads</small>
+        </h2>
+      </div>
+      <div class="section-body">
+        <p>Caminos anchos de servicio por los cuales pueden transitar camionetas.</p>
+
+
+        <div class="item item-collapsible" *ngFor="let trail of fireRoads">
+          <div class="item-title">{{ trail.name }}</div>
+          <div class="item-body">
+            {{ trail.description }}
+            <ul class="trail-classification">
+              <li>
+                <i class="fa fa-fw fa-male"></i><i class="fa fa-fw fa-long-arrow-up"></i>
+                <span *ngIf="trail.walk_up.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.walk_up.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.walk_up.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.walk_up.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.walk_up.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.walk_up.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.walk_up.banned" class="label banned"></span>
+                {{ trail.walk_up.description }}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-male"></i><i class="fa fa-fw fa-long-arrow-down"></i>
+                <span *ngIf="trail.walk_down.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.walk_down.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.walk_down.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.walk_down.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.walk_down.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.walk_down.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.walk_down.banned" class="label banned"></span>
+                {{ trail.walk_down.description }}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-bicycle"></i><i class="fa fa-fw fa-long-arrow-up"></i>
+                <span *ngIf="trail.bike_up.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.bike_up.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.bike_up.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.bike_up.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.bike_up.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.bike_up.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.bike_up.banned" class="label banned"></span>
+                {{ trail.bike_up.description }}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-bicycle"></i><i class="fa fa-fw fa-long-arrow-down"></i>
+                <span *ngIf="trail.bike_down.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.bike_down.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.bike_down.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.bike_down.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.bike_down.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.bike_down.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.bike_down.banned" class="label banned"></span>
+                {{ trail.bike_down.description }}
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section section-collapsible">
+      <div class="section-title">
+        <h2>Veredas
+          <small>Singletracks</small>
+        </h2>
+      </div>
+      <div class="section-body">
+        <p>Caminos angostos de 70 a 150 cms, generalmente más técnicos y accidentados que las brechas.</p>
+
+
+        <div class="item item-collapsible" *ngFor="let trail of singleTracks">
+          <div class="item-title">{{ trail.name }}</div>
+          <div class="item-body">
+            {{ trail.description }}
+            <ul class="trail-classification">
+              <li>
+                <i class="fa fa-fw fa-male"></i><i class="fa fa-fw fa-long-arrow-up"></i>
+                <span *ngIf="trail.walk_up.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.walk_up.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.walk_up.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.walk_up.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.walk_up.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.walk_up.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.walk_up.banned" class="label banned"></span>
+                {{ trail.walk_up.description }}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-male"></i><i class="fa fa-fw fa-long-arrow-down"></i>
+                <span *ngIf="trail.walk_down.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.walk_down.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.walk_down.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.walk_down.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.walk_down.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.walk_down.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.walk_down.banned" class="label banned"></span>
+                {{ trail.walk_down.description }}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-bicycle"></i><i class="fa fa-fw fa-long-arrow-up"></i>
+                <span *ngIf="trail.bike_up.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.bike_up.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.bike_up.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.bike_up.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.bike_up.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.bike_up.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.bike_up.banned" class="label banned"></span>
+                {{ trail.bike_up.description }}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-bicycle"></i><i class="fa fa-fw fa-long-arrow-down"></i>
+                <span *ngIf="trail.bike_down.difficulty == 0" class="label unknown"></span>
+                <span *ngIf="trail.bike_down.difficulty == 1" class="label beginner"></span>
+                <span *ngIf="trail.bike_down.difficulty == 2" class="label medium"></span>
+                <span *ngIf="trail.bike_down.difficulty == 3" class="label advanced"></span>
+                <span *ngIf="trail.bike_down.difficulty == 4" class="label expert"></span>
+                <span *ngIf="trail.bike_down.difficulty == 5" class="label impossible"></span>
+                <span *ngIf="trail.bike_down.banned" class="label banned"></span>
+                {{ trail.bike_down.description }}
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!--
+
+    <section class="section section-collapsible">
+      <div class="section-title">
+        <h2>Descargas</h2>
+      </div>
+      <div class="section-body">
+        <p>El archivo del mapa está disponible en formato <code>KML</code> para <a href="#">Google Earth</a>
+          <a class="button" href="#"><i class="fa fa-download"></i> Descargar Archivo </a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-small section-collapsible">
+      <div class="section-title">
+        <h2>Colaboradores</h2>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>Edmundo Fuentes</li>
+          <li>Joe Doe</li>
+          <li>John Smith</li>
+          <li>HB enduro Team</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="legal" class="section section-small section-collapsible">
+      <div class="section-title">
+        <h2>Legal / Disclaimer</h2>
+      </div>
+      <div class="section-body">
+        <p>No nos hacemos responsables, por blah blah blah
+          meramente informativo</p>
+        <p>No estamos asociados con el Parque Chipinque</p>
+        <p>Made with Google My Maps</p>
+      </div>
+    </section>
+
+    -->
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="copyright">
+        <!--&copy; 2017 Edmundo Fuentes.<br>-->
+        Desarrollado por <a href="http://www.angle.mx" target="_blank">Angle</a>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<!-- Map -->
+<div id="map">
+  <iframe id="map-iframe" src="https://www.google.com/maps/d/u/0/embed?mid=1Bfi0Djr41R-IMb0A6Hbr2QsXVnQ" width="640"
+          height="480" border="0"></iframe>
+  <div class="inner">
+    <div class="toggle"></div>
+  </div>
+</div>
