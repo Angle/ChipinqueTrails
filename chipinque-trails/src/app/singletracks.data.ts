@@ -32,7 +32,7 @@ export const SingleTracks: Trail[] = [
     description: '',
     walk_up: {
       difficulty: 0,
-      banned: true,
+      banned: false,
       description: ''
     },
     walk_down: {
@@ -122,6 +122,31 @@ export const SingleTracks: Trail[] = [
     },
     bike_down: {
       difficulty: 4,
+      banned: true,
+      description: ''
+    }
+  },
+  {
+    code: 'florida',
+    name: 'La Florida',
+    description: '',
+    walk_up: {
+      difficulty: 4,
+      banned: false,
+      description: ''
+    },
+    walk_down: {
+      difficulty: 4,
+      banned: false,
+      description: ''
+    },
+    bike_up: {
+      difficulty: 5,
+      banned: true,
+      description: ''
+    },
+    bike_down: {
+      difficulty: 5,
       banned: true,
       description: ''
     }
@@ -353,7 +378,7 @@ export const SingleTracks: Trail[] = [
   },
   {
     code: 'cabras-1',
-    name: 'Las Cabras 1',
+    name: 'Cabras 1',
     description: '',
     walk_up: {
       difficulty: 0,
@@ -378,7 +403,7 @@ export const SingleTracks: Trail[] = [
   },
   {
     code: 'cabras-2',
-    name: 'Las Cabras 2',
+    name: 'Cabras 2',
     description: '',
     walk_up: {
       difficulty: 0,
@@ -477,31 +502,6 @@ export const SingleTracks: Trail[] = [
     }
   },
   {
-    code: 'ecobikes-rush',
-    name: 'Ecobikes DH Rush',
-    description: 'Pista privada de Downhill dentro de la propiedad del Hotel, operada por Ecobikes.',
-    walk_up: {
-      difficulty: 5,
-      banned: true,
-      description: ''
-    },
-    walk_down: {
-      difficulty: 5,
-      banned: true,
-      description: ''
-    },
-    bike_up: {
-      difficulty: 5,
-      banned: true,
-      description: ''
-    },
-    bike_down: {
-      difficulty: 4,
-      banned: false,
-      description: ''
-    }
-  },
-  {
     code: 'aranas',
     name: 'Arañas',
     description: '',
@@ -523,6 +523,31 @@ export const SingleTracks: Trail[] = [
     bike_down: {
       difficulty: 4,
       banned: true,
+      description: ''
+    }
+  },
+  {
+    code: 'ecobikes-rush',
+    name: 'Ecobikes DH Rush',
+    description: 'Pista privada de Downhill dentro de la propiedad del Hotel, operada por Ecobikes.',
+    walk_up: {
+      difficulty: 5,
+      banned: true,
+      description: ''
+    },
+    walk_down: {
+      difficulty: 5,
+      banned: true,
+      description: ''
+    },
+    bike_up: {
+      difficulty: 5,
+      banned: true,
+      description: ''
+    },
+    bike_down: {
+      difficulty: 4,
+      banned: false,
       description: ''
     }
   }
